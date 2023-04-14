@@ -17,6 +17,18 @@ class CounterPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              BlocListener<CounterBloc, CounterState>(
+                listenWhen: (previous, current) {
+                  print(previous);
+                  print(current);
+                  print(previous != current);
+                  return (previous != current);
+                },
+                listener: (context, state) {
+                  print("new state emmitted by the CounterBloc");
+                },
+                child: const Text("BlocListener"),
+              ),
               BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
                 if (state is CounterInitial) {
                   return const Text(

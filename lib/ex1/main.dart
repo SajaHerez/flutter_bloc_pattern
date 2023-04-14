@@ -3,9 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_pattern/ex1/counter_page.dart';
 
 import 'bloc/counter_bloc.dart';
-
+import 'my_boserver.dart';
 
 void main() {
+  Bloc.observer = MyObserver();
   runApp(const MyApp());
 }
 
